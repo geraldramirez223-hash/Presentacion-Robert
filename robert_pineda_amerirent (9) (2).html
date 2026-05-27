@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robert Pineda — Amerirent</title>
+<style>
+/* ── Reset aislado con prefijo amr- ── */
+.amr-card *, .amr-card *::before, .amr-card *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+}
+
+/* ── Contenedor principal ── */
+.amr-card {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  color: #1a202c;
+}
+
+/* ── CABECERA ── */
+.amr-header {
+  background: #0D2B5E;
+  padding: 28px 24px 22px;
+  position: relative;
+}
+.amr-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, #B8960C 0%, rgba(184,150,12,0) 70%);
+  margin-top: 18px;
+}
+.amr-logo {
+  height: 28px;
+  width: auto;
+  display: block;
+  margin-bottom: 18px;
+  filter: brightness(0) invert(1);
+}
+.amr-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+.amr-role {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-top: 5px;
+}
+
+/* ── LISTA CONTACTO ── */
+.amr-list {
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+.amr-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+a.amr-row:hover { background: #f8fafc; }
+.amr-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #f0f4fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.amr-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: #0D2B5E;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.amr-icon svg.filled { fill: #0D2B5E; stroke: none; }
+.amr-info { display: flex; flex-direction: column; min-width: 0; }
+.amr-label {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 1px;
+}
+.amr-value {
+  font-size: 13.5px;
+  color: #1e293b;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── REDES SOCIALES ── */
+.amr-social {
+  display: flex;
+  gap: 8px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.amr-social-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  text-decoration: none;
+  color: #475569;
+  font-size: 11.5px;
+  font-weight: 500;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.amr-social-btn:hover {
+  border-color: #0D2B5E;
+  background: #0D2B5E;
+  color: #fff;
+}
+.amr-social-btn svg {
+  width: 13px; height: 13px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  flex-shrink: 0;
+}
+
+/* ── BOTONES ── */
+.amr-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.amr-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.15s, transform 0.15s;
+  letter-spacing: 0.2px;
+}
+.amr-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.amr-btn svg {
+  width: 17px; height: 17px;
+  flex-shrink: 0;
+}
+.amr-btn-wa {
+  background: #22c55e;
+  color: #fff;
+}
+.amr-btn-wa svg { fill: #fff; }
+.amr-btn-save {
+  background: #0D2B5E;
+  color: #fff;
+}
+.amr-btn-save svg {
+  stroke: #fff;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── QR ── */
+.amr-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 24px 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.amr-qr-label {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.amr-qr-box {
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  line-height: 0;
+}
+.amr-qr-box canvas {
+  display: block;
+  width: 140px;
+  height: 140px;
+}
+
+/* ── FOOTER ── */
+.amr-footer {
+  text-align: center;
+  padding: 14px 24px;
+  font-size: 10px;
+  color: #cbd5e1;
+  letter-spacing: 0.4px;
+}
+</style>
+</head>
+<body style="margin:0;padding:20px;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;">
+
+<div class="amr-card">
+
+  <!-- CABECERA -->
+  <div class="amr-header">
+    <img class="amr-logo"
+      src="https://images.squarespace-cdn.com/content/v1/6419a6bf70a5ba0abd6a79af/41e5136e-1a49-48ff-88c4-aaf7113fbf7c/logo+white.png?format=300w"
+      alt="Amerirent">
+    <div class="amr-name">Robert Pineda</div>
+    <div class="amr-role">Cuentas Corporativas</div>
+  </div>
+
+  <!-- CONTACTO -->
+  <div class="amr-list">
+
+    <a class="amr-row" href="mailto:mpineda@amerirent.do">
+      <div class="amr-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="amr-info">
+        <span class="amr-label">Correo</span>
+        <span class="amr-value">mpineda@amerirent.do</span>
+      </div>
+    </a>
+
+    <a class="amr-row" href="tel:+18295994341">
+      <div class="amr-icon">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <div class="amr-info">
+        <span class="amr-label">Celular</span>
+        <span class="amr-value">(829) 599-4341</span>
+      </div>
+    </a>
+
+    <a class="amr-row" href="tel:+18096870505">
+      <div class="amr-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      </div>
+      <div class="amr-info">
+        <span class="amr-label">Oficina</span>
+        <span class="amr-value">(809) 687-0505 · Ext. 8256</span>
+      </div>
+    </a>
+
+    <a class="amr-row" href="https://maps.app.goo.gl/h3PTPojdyp6MhJoU7" target="_blank">
+      <div class="amr-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="amr-info">
+        <span class="amr-label">Dirección</span>
+        <span class="amr-value" style="white-space:normal;font-size:12.5px;">Av. Independencia 1065, Zona Universitaria, Santo Domingo</span>
+      </div>
+    </a>
+
+    <a class="amr-row" href="https://amerirentcarrental.com" target="_blank">
+      <div class="amr-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      </div>
+      <div class="amr-info">
+        <span class="amr-label">Web</span>
+        <span class="amr-value">amerirentcarrental.com</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- REDES -->
+  <div class="amr-social">
+    <a class="amr-social-btn" href="https://www.instagram.com/amerirentrd/" target="_blank">
+      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" style="fill:currentColor;stroke:none"/></svg>
+      Instagram
+    </a>
+    <a class="amr-social-btn" href="https://www.linkedin.com/company/amerirentcar/posts/?feedView=all" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+  </div>
+
+  <!-- BOTONES -->
+  <div class="amr-actions">
+    <a class="amr-btn amr-btn-wa" href="https://wa.me/18295994341" target="_blank">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.52 3.48A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12a11.93 11.93 0 001.64 6.07L0 24l6.11-1.6A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zm-8.52 18.45a9.9 9.9 0 01-5.05-1.38l-.36-.21-3.63.95.97-3.54-.24-.37A9.93 9.93 0 0112 2.07c5.49 0 9.93 4.44 9.93 9.93s-4.44 9.93-9.93 9.93zm5.45-7.44c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.19-.57-.34z"/></svg>
+      Enviar WhatsApp
+    </a>
+    <button class="amr-btn amr-btn-save" onclick="amrSave()">
+      <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      Guardar Contacto
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="amr-footer">© 2025 Amerirent · Todos los derechos reservados</div>
+
+</div>
+
+<script>
+(function(){
+  var data =
+    "BEGIN:VCARD\nVERSION:3.0\nFN:Robert Pineda\nN:Pineda;Robert;;;\n" +
+    "ORG:Amerirent\nTITLE:Encargado de Cuentas Corporativas\n" +
+    "TEL;TYPE=CELL:+18295994341\nTEL;TYPE=WORK:+18096870505\n" +
+    "EMAIL:mpineda@amerirent.do\n" +
+    "ADR;TYPE=WORK:;;Av. Independencia 1065;Santo Domingo;;10105;DO\n" +
+    "URL:https://amerirentcarrental.com\nEND:VCARD";
+  var c = document.getElementById('amrQr');
+  var img = new Image();
+  img.crossOrigin = "anonymous";
+  img.onload = function(){
+    c.width = img.naturalWidth; c.height = img.naturalHeight;
+    c.getContext('2d').drawImage(img,0,0);
+  };
+  img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=' + encodeURIComponent(data);
+})();
+
+function amrSave(){
+  var v =
+    "BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Robert Pineda\r\nN:Pineda;Robert;;;\r\n" +
+    "ORG:Amerirent\r\nTITLE:Encargado de Cuentas Corporativas\r\n" +
+    "TEL;TYPE=CELL:(829) 599-4341\r\nTEL;TYPE=WORK:(809) 687-0505\r\n" +
+    "EMAIL:mpineda@amerirent.do\r\n" +
+    "ADR;TYPE=WORK:;;Av. Independencia 1065;Santo Domingo;;10105;Dominican Republic\r\n" +
+    "URL:https://amerirentcarrental.com\r\nEND:VCARD";
+  var b = new Blob([v],{type:'text/vcard'});
+  var u = URL.createObjectURL(b);
+  var a = document.createElement('a');
+  a.href = u; a.download = 'Robert_Pineda_Amerirent.vcf';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(u);
+}
+</script>
+</body>
+</html>
